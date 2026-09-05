@@ -1,25 +1,3 @@
-"""
-app.py
-
-TrustScore — AI-Powered Merchant Transaction Risk Scoring System
-
-Main Flask application. Exposes a REST API that:
-  - handles login/registration (JWT-based, with analyst/admin roles)
-  - scores transactions in real time using the best-performing trained model
-  - explains scores using both rule-based reasons and SHAP values
-  - stores reviewer feedback for retraining, and lets admins trigger a retrain
-  - lets admins adjust risk thresholds without touching code
-  - raises alerts when a merchant's recent average risk score spikes
-  - serves filtered, paginated data for the dashboard, plus CSV export
-
-First-time setup:
-    python generate_data.py
-    python model.py
-
-Then run:
-    python app.py
-"""
-
 import io
 import csv
 import random

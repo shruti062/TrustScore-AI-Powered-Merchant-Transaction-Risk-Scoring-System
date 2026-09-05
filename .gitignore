@@ -1,0 +1,32 @@
+# Generated ML artifacts (regenerate with generate_data.py + model.py)
+backend/transactions.csv
+backend/transactions_with_feedback.csv
+backend/risk_model.pkl
+backend/metrics.json
+backend/best_model_name.pkl
+backend/shap_background.pkl
+
+# Database (regenerated automatically on first run)
+backend/trustscore.db
+
+# Environment variables / secrets — never commit real ones
+.env
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+venv/
+env/
+
+# Logs
+*.log
+backend/server.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

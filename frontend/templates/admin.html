@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TrustScore - Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% include "partials/navbar.html" %}
+
+    <div class="container mt-4" style="max-width: 700px;">
+
+        <div id="accessDenied" class="alert alert-danger d-none">
+            This page is only available to admin accounts.
+        </div>
+
+        <div id="adminContent" class="d-none">
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">Risk Thresholds</div>
+                <div class="card-body">
+                    <p class="text-muted small">
+                        These control which risk score triggers a "review" vs
+                        a "block" recommendation, and when a merchant alert
+                        fires. Changes apply immediately to new transactions.
+                    </p>
+                    <div class="mb-3">
+                        <label class="form-label">Review threshold (score ≥ this = "review")</label>
+                        <input type="number" class="form-control" id="reviewThreshold">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Block threshold (score ≥ this = "block")</label>
+                        <input type="number" class="form-control" id="blockThreshold">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Merchant alert threshold (avg score ≥ this triggers an alert)</label>
+                        <input type="number" class="form-control" id="alertThreshold">
+                    </div>
+                    <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
+                    <span class="ms-2 small text-success d-none" id="settingsSaved">Saved!</span>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">Model Retraining</div>
+                <div class="card-body">
+                    <p class="text-muted small">
+                        Retrains the model using every "Fraud"/"Safe" verdict
+                        analysts have submitted so far, merges it into the
+                        training data, and reloads the new model live.
+                    </p>
+                    <p class="small">
+                        Feedback collected so far: <strong id="feedbackCount">-</strong>
+                    </p>
+                    <button class="btn btn-warning" id="retrainBtn">Retrain Model Now</button>
+                    <div id="retrainResult" class="alert alert-info mt-3 d-none small"></div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">User Management</div>
+                <div class="card-body">
+                    <p class="text-muted small">
+                        View all analyst and admin accounts, and change roles.
+                    </p>
+                    <a href="/admin/users" class="btn btn-outline-primary">Manage Users</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='toast.js') }}"></script>
+    <script src="{{ url_for('static', filename='common.js') }}"></script>
+    <script src="{{ url_for('static', filename='notifications.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
+</body>
+</html>

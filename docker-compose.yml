@@ -1,0 +1,13 @@
+# Run the whole app with:  docker compose up --build
+
+services:
+  trustscore:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-trustscore-dev-secret-change-this-in-production}
+      - FLASK_DEBUG=False
+      - PORT=5000

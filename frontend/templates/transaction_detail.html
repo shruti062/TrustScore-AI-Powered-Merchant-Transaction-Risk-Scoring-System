@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TrustScore - Transaction Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% include "partials/navbar.html" %}
+
+    <div class="container mt-4" style="max-width: 900px;">
+
+        <a href="/" class="back-link">&larr; Back to dashboard</a>
+
+        <div id="notFound" class="alert alert-warning mt-3 d-none">
+            Transaction not found.
+        </div>
+
+        <div id="detailContent" class="d-none">
+            <div class="page-header d-flex justify-content-between align-items-start flex-wrap gap-3">
+                <div>
+                    <h3 id="txnId">-</h3>
+                    <p class="subtitle mb-0">
+                        Merchant: <a id="merchantLink" href="#">-</a> &middot;
+                        <span id="txnTime">-</span>
+                    </p>
+                </div>
+                <div id="actionBadgeContainer"></div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card summary-stat-card text-center shadow-sm" id="riskScoreCard">
+                        <div class="card-body">
+                            <h6 class="text-muted">Risk Score</h6>
+                            <h2 id="riskScore">-</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card summary-stat-card text-center shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-muted">Amount</h6>
+                            <h2 id="amount">-</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card summary-stat-card text-center shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-muted">Hour of Day</h6>
+                            <h2 id="hourOfDay">-</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">Why this score — rule-based reasons</div>
+                <div class="card-body">
+                    <ul id="reasonsList" class="mb-0"></ul>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">SHAP feature contributions</div>
+                <div class="card-body">
+                    <p class="text-muted small">
+                        How much each feature pushed the risk score up (red) or down (green),
+                        according to the model itself.
+                    </p>
+                    <canvas id="shapChart" height="80"></canvas>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">Submit Feedback</div>
+                <div class="card-body">
+                    <p class="text-muted small">Confirm whether this transaction was actually fraud.</p>
+                    <button class="btn btn-outline-danger" id="markFraudBtn">Mark as Fraud</button>
+                    <button class="btn btn-outline-success" id="markSafeBtn">Mark as Safe</button>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header">Feedback History</div>
+                <div class="card-body p-0">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr><th>Reviewer</th><th>Verdict</th><th>When</th></tr>
+                        </thead>
+                        <tbody id="feedbackHistoryTable"></tbody>
+                    </table>
+                    <p class="text-muted small p-3 mb-0 d-none" id="noFeedbackYet">No feedback submitted yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='toast.js') }}"></script>
+    <script src="{{ url_for('static', filename='common.js') }}"></script>
+    <script src="{{ url_for('static', filename='notifications.js') }}"></script>
+    <script>const TXN_ID = {{ txn_id | tojson }};</script>
+    <script src="{{ url_for('static', filename='transaction_detail.js') }}"></script>
+</body>
+</html>

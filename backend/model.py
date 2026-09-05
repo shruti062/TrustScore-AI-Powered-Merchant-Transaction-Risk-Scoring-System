@@ -1,22 +1,3 @@
-"""
-model.py
-
-Trains and compares THREE models for fraud risk scoring:
-  - Logistic Regression (simple baseline, fast, very interpretable)
-  - Random Forest (good general-purpose tabular model)
-  - XGBoost (usually the strongest performer on tabular data)
-
-We train all three, evaluate them on the same held-out test set, and
-keep the best one (by ROC-AUC) as the model the app actually uses.
-The comparison metrics are saved to metrics.json so the dashboard can
-show WHY that model was chosen — this is what separates "I trained a
-model" from "I evaluated multiple models and picked the best one."
-
-We also use SHAP (SHapley Additive exPlanations) to explain individual
-predictions — for any transaction, SHAP tells us exactly how much each
-feature pushed the risk score up or down. This is layered on top of
-the simpler rule-based explanation for a reviewer-friendly summary.
-"""
 
 import json
 import pandas as pd

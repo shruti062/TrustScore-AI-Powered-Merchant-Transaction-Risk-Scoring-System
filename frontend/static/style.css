@@ -1,0 +1,227 @@
+/* ---- Light theme (default) ---- */
+:root {
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+}
+
+/* ---- Dark theme ---- */
+[data-theme="dark"] {
+    --bg-color: #14181f;
+    --card-bg: #1e2430;
+    --text-color: #e8eaed;
+    --text-muted: #9aa4b2;
+    --border-color: #333c4a;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="dark"] .card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .card-header {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .table {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .table thead {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .table-hover > tbody > tr:hover > * {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: #262e3d;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* ---- Risk badges (same in both themes — color-coded meaning shouldn't change) ---- */
+.risk-badge {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.risk-block { background-color: #f8d7da; color: #842029; }
+.risk-review { background-color: #fff3cd; color: #664d03; }
+.risk-allow { background-color: #d1e7dd; color: #0f5132; }
+
+.reasons-cell {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    max-width: 220px;
+}
+
+.feedback-btn {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+}
+
+.alert-card {
+    border-left: 4px solid #dc3545;
+    background: #fff5f5;
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #212529;
+}
+
+/* ---- Notification bell dropdown ---- */
+.notif-panel {
+    position: absolute;
+    top: 56px;
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    z-index: 1500;
+}
+
+.notif-item {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.85rem;
+}
+
+.notif-item:last-child {
+    border-bottom: none;
+}
+
+.notif-link {
+    text-decoration: none;
+}
+
+.notif-message {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+.notif-empty {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ---- Back-to link (used on detail/sub pages) ---- */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.back-link:hover {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transform: translateX(-2px);
+}
+
+/* ---- Page header (title + subtitle pattern used on detail pages) ---- */
+.page-header {
+    margin-top: 18px;
+    margin-bottom: 24px;
+}
+
+.page-header h3, .page-header h4 {
+    margin-bottom: 4px;
+}
+
+.page-header .subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ---- Profile page ---- */
+.profile-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+.profile-info-row:last-child {
+    border-bottom: none;
+}
+
+.profile-info-row .label {
+    color: var(--text-muted);
+}
+
+.profile-info-row .value {
+    font-weight: 600;
+}
+
+/* ---- Merchant / transaction detail summary cards ---- */
+.summary-stat-card {
+    border-radius: 10px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.summary-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.stat-card-high {
+    border-left: 4px solid #dc3545;
+}
+.stat-card-high h2, .stat-card-high h3 {
+    color: #dc3545;
+}
+
+.stat-card-medium {
+    border-left: 4px solid #ffc107;
+}
+.stat-card-medium h2, .stat-card-medium h3 {
+    color: #b8860b;
+}
+
+.stat-card-low {
+    border-left: 4px solid #198754;
+}
+.stat-card-low h2, .stat-card-low h3 {
+    color: #198754;
+}

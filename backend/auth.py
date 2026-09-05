@@ -1,14 +1,3 @@
-"""
-auth.py
-
-Small authentication helper. Two roles exist:
-  - "analyst" : can view the dashboard and submit feedback
-  - "admin"   : same as analyst, plus can trigger retraining
-
-Passwords are hashed with bcrypt before storage — we never store or
-log a plain-text password.
-"""
-
 import bcrypt
 import database
 

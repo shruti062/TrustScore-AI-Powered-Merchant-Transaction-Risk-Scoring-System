@@ -1,22 +1,3 @@
-"""
-generate_data.py
-
-Creates a synthetic dataset of payment transactions to train our risk
-model on. In a real product this would come from Razorpay's actual
-transaction logs — here we simulate realistic patterns so the model
-has something meaningful to learn from.
-
-Improvement over a naive random dataset: each merchant gets its own
-"normal behaviour" baseline (typical amount, typical hours). Fraud is
-then modeled as a DEVIATION from that merchant's own baseline, not
-just generic high-risk features. This mirrors how real fraud systems
-think ("is this normal for THIS merchant/customer?") rather than
-using one flat rule for everyone.
-
-Run this once before training:
-    python generate_data.py
-"""
-
 import random
 import csv
 from datetime import datetime, timedelta

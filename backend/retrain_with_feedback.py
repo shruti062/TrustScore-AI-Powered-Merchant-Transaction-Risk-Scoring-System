@@ -1,18 +1,3 @@
-"""
-retrain_with_feedback.py
-
-Demonstrates the feedback loop: when reviewers confirm a transaction
-as fraud or safe on the dashboard, that verdict is stored in the
-`feedback` table. `retrain_with_feedback()` pulls those confirmed
-labels, merges them into the training data as ground truth
-(overriding the synthetic label), and retrains the model.
-
-Can be run two ways:
-  1. From the command line, for a manual retrain:
-         python retrain_with_feedback.py
-  2. Called as a function from app.py, so an admin can trigger a
-     retrain from the dashboard without touching a terminal.
-"""
 
 import pandas as pd
 import database

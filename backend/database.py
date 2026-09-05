@@ -1,18 +1,3 @@
-"""
-database.py
-
-SQLite storage for TrustScore.
-
-Tables:
-  - scored_transactions : every transaction we've scored
-  - users               : login accounts (analyst / admin roles)
-  - feedback            : reviewer confirmations used to retrain the model
-  - alerts              : auto-generated warnings when a merchant's
-                          average risk trends upward
-  - settings            : key-value store for admin-configurable values
-                          (e.g. block/review score thresholds), so these
-                          don't have to be hardcoded in the source code
-"""
 
 import sqlite3
 from contextlib import contextmanager

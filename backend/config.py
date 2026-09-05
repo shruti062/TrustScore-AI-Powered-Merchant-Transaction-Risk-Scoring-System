@@ -1,15 +1,3 @@
-"""
-config.py
-
-Centralizes all configuration in one place instead of scattering
-hardcoded values through app.py. Values are read from environment
-variables (with sensible defaults for local development) so secrets
-never need to live in source code.
-
-For local development, copy .env.example to .env and fill in real
-values — python-dotenv (loaded below) will pick it up automatically.
-"""
-
 import os
 from datetime import timedelta
 from dotenv import load_dotenv

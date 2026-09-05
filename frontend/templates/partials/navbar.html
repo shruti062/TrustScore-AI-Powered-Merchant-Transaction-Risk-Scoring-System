@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dark bg-dark px-4 d-flex justify-content-between">
+    <div class="d-flex align-items-center gap-3">
+        <a href="/" class="text-light text-decoration-none">
+            <span class="navbar-brand mb-0 h1">TrustScore</span>
+        </a>
+        <span class="text-light small d-none d-md-inline">AI-Powered Merchant Risk Radar</span>
+    </div>
+    <div class="text-light small d-flex align-items-center gap-3">
+        <button class="btn btn-sm btn-outline-light position-relative" id="notifBell" title="Recent alerts">
+            🔔
+            <span class="badge rounded-pill bg-danger d-none" id="notifCount" style="position:absolute; top:-6px; right:-6px; font-size:0.65rem;">0</span>
+        </button>
+        <button class="btn btn-sm btn-outline-light" id="themeToggle" title="Toggle dark mode">🌙</button>
+        <a href="/admin" id="adminLink" class="text-light small d-none">Admin Panel</a>
+        <a href="/profile" class="text-light small">Profile</a>
+        <span>Logged in as <strong id="currentUser">-</strong></span>
+        <button class="btn btn-sm btn-outline-light" id="logoutBtn">Log out</button>
+    </div>
+</nav>
+
+<!-- Notification dropdown panel (hidden until bell is clicked) -->
+<div id="notifPanel" class="d-none"></div>
