@@ -1,4 +1,10 @@
 flask
+flask-jwt-extended
 pandas
 scikit-learn
+xgboost
+shap
+bcrypt
 joblib
+python-dotenv
+pytest
